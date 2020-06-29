@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import styled, {ThemeProvider} from 'styled-components';
+import fs from 'fs';
+import fm from 'front-matter';
 
 import MainSection from '../components/mainSection';
 import BlogList from '../components/blogList';
@@ -10,7 +12,7 @@ const Container = styled.div`
     background-color: ${({theme}) => theme.colors.background};
 `;
 
-export default function Home() {
+export default function Home({posts}) {
     return (
         <ThemeProvider theme={mainTheme}>
             <Container>
@@ -20,7 +22,7 @@ export default function Home() {
                 </Head>
                 <main>
                     <MainSection />
-                    <BlogList />
+                    <BlogList posts={posts} />
                 </main>
                 <style jsx global>{`
                     html,
@@ -38,4 +40,25 @@ export default function Home() {
             </Container>
         </ThemeProvider>
     );
+}
+
+export async function getStaticProps() {
+    const files = fs.readdirSync(process.cwd() + '/_posts');
+
+    const posts = files.map((filename) => {
+        const markdown = fs.readFileSync('./_posts/' + filename).toString();
+
+        const frontmatter = fm(markdown);
+
+        return {
+            slug: filename.replace('.md', ''),
+            frontmatter,
+        };
+    });
+
+    return {
+        props: {
+            posts,
+        },
+    };
 }

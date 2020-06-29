@@ -2,19 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-    display: flex;
     height: 30vh;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background-color: ${({theme}) => theme.colors.shade};
 `;
 
-const Wrapper = styled.div`
-    width: 60vw;
-    @media (max-width: 700px) {
-        width: 90vw;
-    }
+const Wrapper = styled.header`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem;
 `;
 
 const Heading = styled.h1`
@@ -24,7 +24,7 @@ const Heading = styled.h1`
     color: ${({theme}) => theme.colors.primary};
 `;
 
-const Description = styled.header`
+const Description = styled.div`
     margin-top: 1.1rem;
     font-family: 'Inter', sans-serif;
     font-weight: normal;
