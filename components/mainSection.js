@@ -11,7 +11,7 @@ const Wrapper = styled.header`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 42rem;
+    max-width: 45rem;
     margin-left: auto;
     margin-right: auto;
     padding: 2rem;

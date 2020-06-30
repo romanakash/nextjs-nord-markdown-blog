@@ -6,7 +6,7 @@ import {format} from 'date-fns';
 const Container = styled.div``;
 
 const Wrapper = styled.div`
-    max-width: 42rem;
+    max-width: 45rem;
     margin-left: auto;
     margin-right: auto;
     padding: 2rem;
