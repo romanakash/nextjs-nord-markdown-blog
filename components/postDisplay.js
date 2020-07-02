@@ -4,32 +4,14 @@ import ReactMarkdown from 'react-markdown/with-html';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {nord} from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import readingTime from 'reading-time';
-import {format} from 'date-fns';
 
-const Container = styled.div``;
+import BlogHeading from './blogHeading';
 
-const Wrapper = styled.div`
+const Container = styled.div`
     max-width: 45rem;
     margin-left: auto;
     margin-right: auto;
     padding: 2rem;
-`;
-
-const Title = styled.a`
-    cursor: pointer;
-    margin: 0;
-    font-family: 'Rubik', sans-serif;
-    font-weight: 600;
-    font-size: 2rem;
-    color: ${({theme}) => theme.colors.tint};
-`;
-
-const DateLabel = styled.p`
-    margin-top: 0.7rem;
-    font-family: 'Inter', 'sans-serif';
-    font-weight: normal;
-    font-size: 1.2rem;
-    color: ${({theme}) => theme.colors.placeholder};
 `;
 
 const MarkdownWrapper = styled.div`
@@ -57,8 +39,9 @@ const CodeBlock = ({language, value}) => {
         <SyntaxHighlighter
             language={language}
             style={nord}
+            wrapLines={true}
             customStyle={{
-                fontSize: '1.1rem',
+                fontSize: '1rem',
                 borderRadius: 5,
                 padding: '1rem',
             }}>
@@ -67,7 +50,7 @@ const CodeBlock = ({language, value}) => {
     );
 };
 
-export default function PostDisplay({post: {frontmatter}}) {
+export default function PostDisplay({post: {slug, frontmatter}}) {
     const theme = useTheme();
 
     const title = frontmatter?.attributes?.title ?? 'Title';
@@ -83,20 +66,22 @@ export default function PostDisplay({post: {frontmatter}}) {
 
     return (
         <Container>
-            <Wrapper>
-                <Title>{title}</Title>
-                <DateLabel>
-                    {' '}
-                    {format(date, 'do MMM yyy')} • {duration}
-                </DateLabel>
-                <MarkdownWrapper>
-                    <ReactMarkdown
-                        source={markdown}
-                        escapeHtml={false}
-                        renderers={{code: CodeBlock}}
-                    />
-                </MarkdownWrapper>
-            </Wrapper>
+            <BlogHeading
+                key={slug}
+                slug={slug}
+                title={title}
+                date={date}
+                duration={duration}
+                description={description}
+                showDescription={false}
+            />
+            <MarkdownWrapper>
+                <ReactMarkdown
+                    source={markdown}
+                    escapeHtml={false}
+                    renderers={{code: CodeBlock}}
+                />
+            </MarkdownWrapper>
             <style jsx global>{`
                 html,
                 body {

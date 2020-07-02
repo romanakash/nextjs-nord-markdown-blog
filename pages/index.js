@@ -9,6 +9,11 @@ import BlogList from '../components/blogList';
 import {mainTheme} from '../styles/theme';
 
 const Container = styled.div`
+    margin: 0;
+    max-width: 45rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2rem;
     background-color: ${({theme}) => theme.colors.background};
 `;
 
