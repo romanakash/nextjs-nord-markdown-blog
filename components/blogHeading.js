@@ -10,12 +10,13 @@ const Title = styled.a`
     margin: 0;
     font-family: 'Rubik', sans-serif;
     font-weight: 600;
-    font-size: 2rem;
+    font-size: 1.75rem;
     color: ${({theme}) => theme.colors.tint};
 `;
 
 const DateLabel = styled.p`
-    margin-top: 0.5rem;
+    margin: 0;
+    margin-top: 0.7rem;
     font-family: 'Inter', 'sans-serif';
     font-weight: normal;
     font-size: 1.2rem;
@@ -23,11 +24,11 @@ const DateLabel = styled.p`
 `;
 
 const Description = styled.p`
-    margin-top: 1rem;
-    font-size: 1.2rem;
+    margin-top: 0.7rem;
+    font-size: 1.1rem;
     font-family: 'Inter', 'sans-serif';
-    font-weight: normal;
-    color: ${({theme}) => theme.colors.primary};
+    font-weight: 300;
+    color: ${({theme}) => theme.colors.body};
 `;
 
 export default function BlogHeading({

@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import styled, {useTheme} from 'styled-components';
+import styled from 'styled-components';
 import readingTime from 'reading-time';
 
 import BlogHeading from './blogHeading';
@@ -11,19 +11,24 @@ const Separator = styled.div`
 `;
 
 export default function BlogList({posts}) {
-    const theme = useTheme();
+    const sortedPosts = posts
+        .map(({slug, frontmatter}) => {
+            const dateArr = frontmatter?.attributes?.date ?? '1970/1/1';
+            const [year, month, day] = dateArr.split('/');
+            const date = new Date(year, month - 1, day);
+
+            return {slug, frontmatter: {...frontmatter, date}};
+        })
+        .sort((a, b) => a.frontmatter?.date < b.frontmatter?.date);
 
     return (
         <Container>
-            {posts.map(({slug, frontmatter}) => {
+            {sortedPosts.map(({slug, frontmatter}) => {
                 const title = frontmatter?.attributes?.title ?? 'Title';
                 const description =
                     frontmatter?.attributes?.description ?? 'description';
-                const dateArr = frontmatter?.attributes?.date ?? '2020/05/30';
-                const [year, month, day] = dateArr.split('/');
-                const date = new Date(year, month - 1, day);
-
                 const markdown = frontmatter?.body ?? 'Hello world';
+                const date = frontmatter?.date ?? new Date(1970, 0, 1);
 
                 const stats = readingTime(markdown);
                 const duration = Math.round(stats.minutes) + ' min';
@@ -37,24 +42,11 @@ export default function BlogList({posts}) {
                             date={date}
                             duration={duration}
                             description={description}
+                            showDescription={true}
                         />
                     </Fragment>
                 );
             })}
-            <style jsx global>{`
-                html,
-                body {
-                    padding: 0;
-                    margin: 0;
-                    font-family: -apple-system, BlinkMacSystemFont, Segoe UI,
-                        Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-                        Helvetica Neue, sans-serif;
-                    background-color: ${theme.colors.background};
-                }
-                * {
-                    box-sizing: border-box;
-                }
-            `}</style>
         </Container>
     );
 }

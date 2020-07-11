@@ -1,35 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
-    background-color: ${({theme}) => theme.colors.background};
-`;
-
 const Wrapper = styled.header`
-    margin-top: 3rem;
+    margin-top: 2rem;
 `;
 
 const Heading = styled.h1`
-    margin: 0 0 0 0rem;
     font-family: 'Rubik', sans-serif;
     font-weight: bold;
     color: ${({theme}) => theme.colors.tint};
+    margin-bottom: 0;
 `;
 
 const Description = styled.div`
-    margin-top: 1.1rem;
+    margin-top: 1rem;
     font-family: 'Inter', sans-serif;
-    font-weight: normal;
+    font-weight: 300;
     font-size: 1.2rem;
-    color: ${({theme}) => theme.colors.primary};
+    color: ${({theme}) => theme.colors.body};
 `;
 
 const SocialIcons = styled.div`
     margin: 1.5rem 0;
     ion-icon {
-        font-size: 32px;
+        font-size: 28px;
         margin-right: 1rem;
-        color: ${({theme}) => theme.colors.primary};
+        color: ${({theme}) => theme.colors.body};
     }
     ion-icon:hover {
         color: ${({theme}) => theme.colors.shade};
@@ -51,20 +47,23 @@ const HorizontalLine = styled.hr`
 
 export default function MainSection() {
     return (
-        <Container>
-            <Wrapper>
-                <Heading>Nathan Drake</Heading>
-                <Description>Professional treasure hunter</Description>
-                <SocialIcons>
-                    <a href="https://github.com/romanakash" target="blank">
-                        <ion-icon name="logo-github" />
-                    </a>
-                    <a href="https://twitter.com/romanakash27" target="blank">
-                        <ion-icon name="logo-twitter" />
-                    </a>
-                </SocialIcons>
-                <HorizontalLine />
-            </Wrapper>
-        </Container>
+        <Wrapper>
+            <Heading>Nathan Drake</Heading>
+            <Description>Professional treasure hunter</Description>
+            <SocialIcons>
+                <a href="https://github.com/romanakash" target="blank">
+                    <ion-icon name="logo-github" />
+                </a>
+                <a href="https://twitter.com/romanakash27" target="blank">
+                    <ion-icon name="logo-twitter" />
+                </a>
+                <a
+                    href="https://www.linkedin.com/in/roman-akash-b32a29170/"
+                    target="blank">
+                    <ion-icon name="logo-linkedin" />
+                </a>
+            </SocialIcons>
+            <HorizontalLine />
+        </Wrapper>
     );
 }

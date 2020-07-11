@@ -1,5 +1,6 @@
 import React from 'react';
 import {ThemeProvider} from 'styled-components';
+import Head from 'next/head';
 import fs from 'fs';
 import fm from 'front-matter';
 import path from 'path';
@@ -9,10 +10,18 @@ import {mainTheme} from '../../styles/theme';
 import PostDisplay from '../../components/postDisplay';
 
 export default function Post({post}) {
+    const title = post?.frontmatter?.attributes?.title ?? 'Title';
+
     return (
-        <ThemeProvider theme={mainTheme}>
-            <PostDisplay post={post} />
-        </ThemeProvider>
+        <>
+            <Head>
+                <title>{title}</title>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <ThemeProvider theme={mainTheme}>
+                <PostDisplay post={post} />
+            </ThemeProvider>
+        </>
     );
 }
 
