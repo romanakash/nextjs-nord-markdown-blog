@@ -51,15 +51,13 @@ export default function MainSection() {
             <Heading>Nathan Drake</Heading>
             <Description>Professional treasure hunter</Description>
             <SocialIcons>
-                <a href="https://github.com/romanakash" target="blank">
+                <a href="https://github.com/" target="blank">
                     <ion-icon name="logo-github" />
                 </a>
-                <a href="https://twitter.com/romanakash27" target="blank">
+                <a href="https://twitter.com/" target="blank">
                     <ion-icon name="logo-twitter" />
                 </a>
-                <a
-                    href="https://www.linkedin.com/in/roman-akash-b32a29170/"
-                    target="blank">
+                <a href="https://www.linkedin.com/" target="blank">
                     <ion-icon name="logo-linkedin" />
                 </a>
             </SocialIcons>

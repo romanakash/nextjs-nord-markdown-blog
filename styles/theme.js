@@ -5,6 +5,5 @@ export const mainTheme = {
         body: '#d8dee9',
         tint: '#88c0d0',
         placeholder: '#4c566a',
-        natural: '#5e81ac',
     },
 };

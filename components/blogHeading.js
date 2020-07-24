@@ -16,7 +16,7 @@ const Title = styled.a`
 
 const DateLabel = styled.p`
     margin: 0;
-    margin-top: 0.7rem;
+    margin-top: 0.8rem;
     font-family: 'Inter', 'sans-serif';
     font-weight: normal;
     font-size: 1.2rem;

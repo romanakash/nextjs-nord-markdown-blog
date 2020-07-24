@@ -7,6 +7,7 @@ import {nord} from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import readingTime from 'reading-time';
 
 import BlogHeading from './blogHeading';
+import Footer from './footer';
 
 const Container = styled.div`
     max-width: 45rem;
@@ -49,7 +50,7 @@ const MarkdownWrapper = styled.div`
         font-family: 'Inter', 'sans-serif';
         font-size: 1.2rem;
         font-weight: 300;
-        margin: 2rem 0;
+        margin: 1.5rem 0;
         line-height: 1.7rem;
     }
     strong {
@@ -98,6 +99,12 @@ const MarkdownWrapper = styled.div`
         max-width: 100%;
         height: auto;
     }
+    code {
+        font-family: 'Inconsolata', 'sans-serif';
+        font-size: 1.2rem;
+        font-weight: 400;
+        margin: 2rem 0;
+    }
 `;
 
 const CodeBlock = ({language, value}) => {
@@ -105,7 +112,6 @@ const CodeBlock = ({language, value}) => {
         <SyntaxHighlighter
             language={language}
             style={nord}
-            wrapLines={true}
             customStyle={{
                 fontSize: '1rem',
                 borderRadius: 5,
@@ -154,6 +160,7 @@ export default function PostDisplay({post: {slug, frontmatter}}) {
                     renderers={{code: CodeBlock}}
                 />
             </MarkdownWrapper>
+            <Footer />
             <style jsx global>{`
                 html,
                 body {

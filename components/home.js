@@ -3,6 +3,7 @@ import styled, {useTheme} from 'styled-components';
 
 import MainSection from './mainSection';
 import BlogList from './blogList';
+import Footer from './footer';
 
 const Container = styled.div`
     max-width: 45rem;
@@ -17,6 +18,7 @@ export default function Home({posts}) {
         <Container>
             <MainSection />
             <BlogList posts={posts} />
+            <Footer />
             <style jsx global>{`
                 html,
                 body {
